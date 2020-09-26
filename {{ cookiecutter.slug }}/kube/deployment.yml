@@ -1,0 +1,31 @@
+api0.1.0ersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ cookiecutter.slug }}-deployment"
+  labels:
+    app: "{{ cookiecutter.slug }}"
+  namespace: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "{{ cookiecutter.slug }}"
+  template:
+    metadata:
+      labels:
+        app: "{{ cookiecutter.slug }}"
+    spec:
+      containers:
+      - name: "{{ cookiecutter.slug }}"
+        image: "virtuatable/{{ cookiecutter.slug }}:<VERSION>"
+        env:
+        - name: "MONGODB_URL"
+          valueFrom:
+            secretKey0.1.0ef:
+              name: "{{ cookiecutter.slug }}"
+              key: "mongo"
+        - name: "RACK_ENV"
+          value: "production"
+        ports:
+          - containerPort: 80
+        imagePullPolicy: Always

@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ cookiecutter.slug }}-ingress"
+  labels:
+    app: "{{ cookiecutter.slug }}"
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  namespace: api
+spec:
+  rules:
+  - http:
+      paths:
+      - path: "/{{ cookiecutter.slug }}(/|$)(.*)"
+        backend:
+          serviceName: "{{ cookiecutter.slug }}-service"
+          servicePort: 80

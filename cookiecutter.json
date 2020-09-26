@@ -1,0 +1,7 @@
+{
+	"resource": "Custom Resource",
+	"plural": "{{ cookiecutter.resource }}s",
+	"glued": "{{ cookiecutter.plural | replace(' ', '') }}",
+	"slug": "{{ cookiecutter.plural | slugify(separator='_') }}",
+	"ruby": ["2.7.1","2.6.5"]
+}
