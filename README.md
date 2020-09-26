@@ -6,7 +6,10 @@ This application is used to create easily new services with up-to-date dependenc
 
 ### Pre-requisites
 
-You need Python 3.7+ first
+To create a Virtuatable service, you first need :
+- Python 3.7+
+- Git with the Git CLI.
+- Ruby Version Manager (RVM)
 
 ### Installation
 
